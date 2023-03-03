@@ -1,0 +1,9 @@
+// Diese Datei enthält Regeln zum Einfärben von Dokumentregisterkarten durch reguläre Ausdrücke. Jede Zeile enthält einen regulären Ausdruck, der anhand des Pfads einer Datei getestet wird. Alle Dateien, die mit einem regulären Ausdruck übereinstimmen, erhalten eine gemeinsame Farbe.
+Reguläre Ausdrücke werden in der Reihenfolge abgeglichen, in der sie in dieser Datei angezeigt werden. Die Syntax finden Sie unter https://docs.microsoft.com/en-us/dotnet/standard/base-types/regular-expressions.
+// Bearbeiten Sie diese Datei, und speichern Sie Ihre Änderungen, damit sie sofort angewendet werden. Alle Fehler beim Analysieren oder Auswerten von Ausdrücken werden in der Aktivitätsprotokoll-XML-Datei angezeigt.
+// Sie können die Farbe anpassen, die einer beliebigen Gruppe von Dateien zugewiesen ist, indem Sie mit der rechten Maustaste auf die Registerkarte klicken und „Registerkartenfarbe festlegen“ auswählen.
+^.*\.cs$
+^.*\.fs$
+^.*\.vb$
+^.*\.cp?p?$
+^.*\.hp?p?$

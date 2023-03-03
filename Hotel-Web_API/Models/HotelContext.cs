@@ -15,13 +15,15 @@ public partial class HotelContext : DbContext
     {
     }
 
-    public virtual DbSet<Person> People { get; set; }
+    
+    public DbSet<Person> People { get; set; }
 
-    public virtual DbSet<Room> Rooms { get; set; }
+    public  DbSet<Room> Rooms { get; set; }
 
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 
-        => optionsBuilder.UseSqlServer("Server=localhost;Database=hotel;Trusted_Connection=True; TrustServerCertificate=Yes");
+
+
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
