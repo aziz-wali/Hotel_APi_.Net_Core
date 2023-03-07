@@ -54,7 +54,7 @@ namespace Hotel_Web_API.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutPerson(int id, Person person)
         {
-            if (id != person.RoomId)
+            if (id != person.Id)
             {
                 return BadRequest();
             }
@@ -92,7 +92,7 @@ namespace Hotel_Web_API.Controllers
             _context.People.Add(person);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPerson", new { id = person.RoomId }, person);
+            return CreatedAtAction("GetPerson", new { id = person.Id }, person);
         }
 
         // DELETE: api/People/5
@@ -117,7 +117,7 @@ namespace Hotel_Web_API.Controllers
 
         private bool PersonExists(int id)
         {
-            return (_context.People?.Any(e => e.RoomId == id)).GetValueOrDefault();
+            return (_context.People?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

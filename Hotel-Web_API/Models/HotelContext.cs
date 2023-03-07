@@ -29,7 +29,7 @@ public partial class HotelContext : DbContext
     {
         modelBuilder.Entity<Person>(entity =>
         {
-            entity.HasKey(e => e.RoomId).HasName("PK__Person__32863939A9740592");
+            entity.HasKey(e => e.Id).HasName("PK__Person__32863939A9740592");
 
             entity.ToTable("Person");
 
