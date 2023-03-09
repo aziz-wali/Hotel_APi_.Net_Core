@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
+using Hotel_Web_API.Models;
 
 namespace Hotel_Web_API.Models;
 
@@ -67,4 +68,6 @@ public partial class HotelContext : DbContext
     }
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+    public DbSet<Hotel_Web_API.Models.Hotel> Hotel { get; set; } = default!;
 }

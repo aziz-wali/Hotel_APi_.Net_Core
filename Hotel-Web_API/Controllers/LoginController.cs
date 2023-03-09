@@ -22,7 +22,7 @@ namespace Hotel_Web_API.Controllers
         private Users AuthenticateUser(Users user)
         {
             Users _user = null;
-            if(user.Username=="Aziz" && user.Password == "123435")
+            if(user.Username=="aziz.wali" && user.Password == "12345")
             {
                 _user = new Users { Username = "aziz.wali" };
             }

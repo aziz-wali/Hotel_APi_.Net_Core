@@ -5,61 +5,60 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Hotel_Web_API.Models;
 
-namespace Hotel_Web_API.Controllers
+namespace Hotel_Web_API.Models
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class PeopleController : ControllerBase
+    public class HotelsController : ControllerBase
     {
         private readonly HotelContext _context;
 
-        public PeopleController(HotelContext context)
+        public HotelsController(HotelContext context)
         {
             _context = context;
         }
 
-        // GET: api/People
+        // GET: api/Hotels
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Person>>> GetPeople()
+        public async Task<ActionResult<IEnumerable<Hotel>>> GetHotel()
         {
-          if (_context.People == null)
+          if (_context.Hotel == null)
           {
               return NotFound();
           }
-            return await _context.People.ToListAsync();
+            return await _context.Hotel.ToListAsync();
         }
 
-        // GET: api/People/5
+        // GET: api/Hotels/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Person>> GetPerson(int id)
+        public async Task<ActionResult<Hotel>> GetHotel(int id)
         {
-          if (_context.People == null)
+          if (_context.Hotel == null)
           {
               return NotFound();
           }
-            var person = await _context.People.FindAsync(id);
+            var hotel = await _context.Hotel.FindAsync(id);
 
-            if (person == null)
+            if (hotel == null)
             {
                 return NotFound();
             }
 
-            return person;
+            return hotel;
         }
 
-        // PUT: api/People/5
+        // PUT: api/Hotels/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutPerson(int id, Person person)
+        public async Task<IActionResult> PutHotel(int id, Hotel hotel)
         {
-            if (id != person.Id)
+            if (id != hotel.HotelId)
             {
                 return BadRequest();
             }
 
-            _context.Entry(person).State = EntityState.Modified;
+            _context.Entry(hotel).State = EntityState.Modified;
 
             try
             {
@@ -67,7 +66,7 @@ namespace Hotel_Web_API.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!PersonExists(id))
+                if (!HotelExists(id))
                 {
                     return NotFound();
                 }
@@ -80,46 +79,44 @@ namespace Hotel_Web_API.Controllers
             return NoContent();
         }
 
-        // POST: api/People
+        // POST: api/Hotels
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Person>> PostPerson(Person person) 
+        public async Task<ActionResult<Hotel>> PostHotel(Hotel hotel)
         {
-          if (_context.People == null)
+          if (_context.Hotel == null)
           {
-              return Problem("Entity set 'HotelContext.People'  is null.");
+              return Problem("Entity set 'HotelContext.Hotel'  is null.");
           }
-            _context.People.Add(person);
+            _context.Hotel.Add(hotel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPerson", new { id = person.Id }, person);
+            return CreatedAtAction("GetHotel", new { id = hotel.HotelId }, hotel);
         }
 
-        // DELETE: api/People/5
+        // DELETE: api/Hotels/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeletePerson(int id)
+        public async Task<IActionResult> DeleteHotel(int id)
         {
-            if (_context.People == null)
+            if (_context.Hotel == null)
             {
                 return NotFound();
             }
-            var person = await _context.People.FindAsync(id);
-            if (person == null)
+            var hotel = await _context.Hotel.FindAsync(id);
+            if (hotel == null)
             {
                 return NotFound();
             }
 
-            _context.People.Remove(person);
+            _context.Hotel.Remove(hotel);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool PersonExists(int id)
+        private bool HotelExists(int id)
         {
-            return (_context.People?.Any(e => e.Id == id)).GetValueOrDefault();
+            return (_context.Hotel?.Any(e => e.HotelId == id)).GetValueOrDefault();
         }
-
-      
     }
 }
