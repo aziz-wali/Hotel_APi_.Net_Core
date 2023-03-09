@@ -3,8 +3,8 @@
     public class Hotel
     {
         public int HotelId { get; set; }
-        public int Name { get; set; }
-        public int Zip { get; set; }
-        public int Address { get; set; }
+        public string Name { get; set; }
+        public string Zip { get; set; }
+        public string Address { get; set; }
     }
 }
