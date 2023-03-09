@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Hotel_Web_API.Models;
 
-namespace Hotel_Web_API.Models
+namespace Hotel_Web_API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
